@@ -1,0 +1,11 @@
+{
+    "name": "droxyum/framework",
+    "description": "school framework project",
+    "authors": [
+        {
+            "name": "Alexandre Simonet",
+            "email": "contact@alexandresimonet.fr"
+        }
+    ],
+    "require": {}
+}
