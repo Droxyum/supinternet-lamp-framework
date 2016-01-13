@@ -9,9 +9,14 @@
 namespace Core;
 
 
+use Core\Request\Request;
+
 class Kernel
 {
+    private $Request;
+
     public function __construct()
     {
+        $this->Request = new Request();
     }
 }
