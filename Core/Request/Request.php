@@ -13,11 +13,13 @@ class Request
 {
     private $method;
     private $host;
+    private $statusCode;
 
     public function __construct()
     {
         $this->method = $_SERVER['REQUEST_METHOD'];
         $this->host = $_SERVER['SERVER_NAME'];
+        $this->statusCode = $_SERVER['REDIRECT_STATUS'];
     }
 
     public function getMethod()
@@ -29,6 +31,12 @@ class Request
     {
         return $this->host;
     }
+
+    public function getStatusCode()
+    {
+        return $this->statusCode;
+    }
+
 
 
 }
