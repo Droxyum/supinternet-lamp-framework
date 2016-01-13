@@ -6,4 +6,6 @@
  * Time: 11:39
  */
 
-require_once 'vendor/autoload.php';
+require_once '../vendor/autoload.php';
+
+$Kernel = new \Core\Kernel();
