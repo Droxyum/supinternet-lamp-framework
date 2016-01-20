@@ -9,12 +9,16 @@
 namespace Core\Http\Request;
 
 
+use Collection\StorageCollection;
+
 class Request
 {
     private $method;
     private $host;
     private $statusCode;
     private $path;
+    private $post;
+    private $get;
 
     public function __construct()
     {
@@ -22,6 +26,8 @@ class Request
         $this->host = $_SERVER['SERVER_NAME'];
         $this->statusCode = $_SERVER['REDIRECT_STATUS'];
         $this->path = str_replace(str_replace(' ', '%20', BASE_URL), '', $_SERVER['REQUEST_URI']);
+        $this->post = new StorageCollection($_POST);
+        $this->get = new StorageCollection($_GET);
     }
 
     public function getMethod()
@@ -43,6 +49,14 @@ class Request
         return $this->path;
     }
 
+    public function getPost()
+    {
+        return $this->post;
+    }
 
+    public function getGet()
+    {
+        return $this->get;
+    }
 
 }
