@@ -16,6 +16,8 @@ use Core\Http\Response\Response;
 class DefaultController extends Controller
 {
     public function index(StorageCollection $params) {
-        return new Response('Default/index.html.twig', [ 'name' => $params->get('name') ]);
+        $Products = $this->Orm->getEntityManager()->getRepository('App\\Entity\\Product')->findAll();
+
+        return new Response('Default/index.html.twig', [ 'name' => $params->get('name'), 'Products' => $Products ]);
     }
 }
