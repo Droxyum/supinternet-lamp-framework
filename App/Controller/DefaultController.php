@@ -16,8 +16,6 @@ use Core\Http\Response\Response;
 class DefaultController extends Controller
 {
     public function index(StorageCollection $params) {
-        return new Response('Default/index.html.twig', [
-            'name' => $params->get('name')
-        ]);
+        return new Response('Default/index.html.twig', [ 'name' => $params->get('name') ]);
     }
 }

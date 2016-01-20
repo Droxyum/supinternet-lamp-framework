@@ -1,0 +1,5 @@
+orm:
+    host: localhost
+    username: framework
+    password: MWQa4cGEV44rF3J7
+    database: framework
