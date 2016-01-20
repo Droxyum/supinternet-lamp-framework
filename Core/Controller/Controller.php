@@ -14,8 +14,8 @@ use Core\Orm\Orm;
 
 class Controller
 {
-    private $Request;
-    private $Orm;
+    protected $Request;
+    protected $Orm;
 
     public function __construct(Request $Request) {
         $this->Request = $Request;
