@@ -9,7 +9,7 @@
 namespace Core\Http\Request;
 
 
-use Collection\StorageCollection;
+use Core\Collection\StorageCollection;
 
 class Request
 {

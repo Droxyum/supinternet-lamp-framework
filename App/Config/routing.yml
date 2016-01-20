@@ -1,0 +1,5 @@
+'homepage':
+    path: '/'
+    controller: Default
+    action: index
+    secure: false

@@ -10,13 +10,16 @@ namespace Core;
 
 
 use Core\Http\Request\Request;
+use Core\Http\Routing\Router;
 
 class Kernel
 {
     private $Request;
+    private $Router;
 
     public function __construct()
     {
         $this->Request = new Request();
+        $this->Router = new Router($this->Request);
     }
 }

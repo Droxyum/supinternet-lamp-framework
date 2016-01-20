@@ -6,10 +6,8 @@
  * Time: 08:54
  */
 
-namespace Collection;
+namespace Core\Collection;
 
-
-use Traversable;
 
 class StorageCollection implements \ArrayAccess, \IteratorAggregate
 {
