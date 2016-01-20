@@ -7,7 +7,9 @@
             "email": "contact@alexandresimonet.fr"
         }
     ],
-    "require": {},
+    "require": {
+        "symfony/yaml": "^3.0"
+    },
     "autoload": {
         "psr-4" : {
             "Core\\" : "Core/",
