@@ -6,7 +6,7 @@
  * Time: 12:01
  */
 
-namespace Core\Request;
+namespace Core\Http\Request;
 
 
 class Request
