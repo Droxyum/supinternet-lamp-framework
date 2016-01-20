@@ -20,6 +20,14 @@ class Request
     private $post;
     private $get;
 
+    private $urlOrigin;
+    private $routeName;
+    private $params;
+
+    private $controller;
+    private $action;
+    private $secure;
+
     public function __construct()
     {
         $this->method = $_SERVER['REQUEST_METHOD'];
@@ -57,6 +65,65 @@ class Request
     public function getGet()
     {
         return $this->get;
+    }
+
+    public function getUrlOrigin()
+    {
+        return $this->urlOrigin;
+    }
+
+    public function setUrlOrigin($urlOrigin)
+    {
+        $this->urlOrigin = $urlOrigin;
+    }
+
+    public function getRouteName()
+    {
+        return $this->routeName;
+    }
+
+    public function setRouteName($routeName)
+    {
+        $this->routeName = $routeName;
+    }
+
+    public function getParams()
+    {
+        return $this->params;
+    }
+
+    public function setParams($params)
+    {
+        $this->params = $params;
+    }
+
+    public function getController()
+    {
+        return $this->controller;
+    }
+
+    public function setController($controller)
+    {
+        $this->controller = $controller;
+    }
+    public function getAction()
+    {
+        return $this->action;
+    }
+
+    public function setAction($action)
+    {
+        $this->action = $action;
+    }
+
+    public function getSecure()
+    {
+        return $this->secure;
+    }
+
+    public function setSecure($secure)
+    {
+        $this->secure = $secure;
     }
 
 }
