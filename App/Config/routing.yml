@@ -1,4 +1,6 @@
 'homepage':
-    path: '/'
+    path: '/:name'
     controller: Default
     action: index
+    requirements:
+        ':name': '[a-zA-Z0-9]+'
