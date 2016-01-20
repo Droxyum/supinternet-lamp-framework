@@ -9,9 +9,9 @@
 namespace Core;
 
 
-use Core\Controller\Controller;
 use Core\Http\Request\Request;
 use Core\Http\Routing\Router;
+use Core\Loader\ControllerLoader;
 
 class Kernel
 {
@@ -23,6 +23,10 @@ class Kernel
     {
         $this->Request = new Request();
         $this->Router = new Router($this->Request);
-        $this->Controller = new Controller($this->Request);
+
+        $ControllerLoader = new ControllerLoader($this->Request->getController());
+        if ($ControllerLoader->exist()) {
+            $this->Controller = $ControllerLoader->getInstance($this->Request);
+        }
     }
 }
