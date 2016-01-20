@@ -39,4 +39,8 @@ class Orm
             self::$em = EntityManager::create($dbParams, $config);
         }
     }
+
+    public function getEntityManager() {
+        return self::$em;
+    }
 }

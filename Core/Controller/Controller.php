@@ -10,12 +10,15 @@ namespace Core\Controller;
 
 
 use Core\Http\Request\Request;
+use Core\Orm\Orm;
 
 class Controller
 {
     private $Request;
+    private $Orm;
 
     public function __construct(Request $Request) {
         $this->Request = $Request;
+        $this->Orm = new Orm();
     }
 }
