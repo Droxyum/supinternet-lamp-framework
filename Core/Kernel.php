@@ -27,6 +27,7 @@ class Kernel
         $ControllerLoader = new ControllerLoader($this->Request->getController());
         if ($ControllerLoader->exist()) {
             $this->Controller = $ControllerLoader->getInstance($this->Request);
+            call_user_func([$this->Controller, $this->Request->getAction()], $this->Request->getParams());
         }
     }
 }
