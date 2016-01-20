@@ -14,12 +14,14 @@ class Request
     private $method;
     private $host;
     private $statusCode;
+    private $path;
 
     public function __construct()
     {
         $this->method = $_SERVER['REQUEST_METHOD'];
         $this->host = $_SERVER['SERVER_NAME'];
         $this->statusCode = $_SERVER['REDIRECT_STATUS'];
+        $this->path = str_replace(str_replace(' ', '%20', BASE_URL), '', $_SERVER['REQUEST_URI']);
     }
 
     public function getMethod()
@@ -35,6 +37,10 @@ class Request
     public function getStatusCode()
     {
         return $this->statusCode;
+    }
+
+    public function getPath() {
+        return $this->path;
     }
 
 
