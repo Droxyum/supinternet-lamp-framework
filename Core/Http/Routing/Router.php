@@ -10,6 +10,7 @@ namespace Core\Http\Routing;
 
 
 use Core\Collection\StorageCollection;
+use Core\Exception\NotFoundException;
 use Core\Http\Request\Request;
 use Core\Loader\ConfigLoader;
 
@@ -56,7 +57,8 @@ class Router
                 return true;
             }
         }
-        return false;
+        $exception = new NotFoundException("Route not found");
+        throw $exception;
     }
 
     private function getInfos() {

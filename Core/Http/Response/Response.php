@@ -9,6 +9,8 @@
 namespace Core\Http\Response;
 
 
+use Core\Exception\NotFoundException;
+
 class Response
 {
     public function __construct($view, $params = [])
@@ -26,6 +28,8 @@ class Response
                 'BASE_URL' => BASE_URL,
                 'ROOT_DIR' => ROOT_DIR
             ]));
+        } else {
+            throw new NotFoundException('Template '.$view.' not found');
         }
     }
 }

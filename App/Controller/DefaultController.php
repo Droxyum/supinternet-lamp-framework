@@ -18,6 +18,6 @@ class DefaultController extends Controller
     public function index(StorageCollection $params) {
         $Products = $this->Orm->getEntityManager()->getRepository('App\\Entity\\Product')->findAll();
 
-        return new Response('Default/index.html.twig', [ 'name' => $params->get('name'), 'Products' => $Products ]);
+        return new Response('Default/index.html.twig', [ 'Products' => $Products ]);
     }
 }

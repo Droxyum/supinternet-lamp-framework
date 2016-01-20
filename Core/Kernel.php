@@ -9,6 +9,7 @@
 namespace Core;
 
 
+use Core\Exception\NotFoundException;
 use Core\Http\Request\Request;
 use Core\Http\Routing\Router;
 use Core\Loader\ControllerLoader;
@@ -21,13 +22,25 @@ class Kernel
 
     public function __construct()
     {
-        $this->Request = new Request();
-        $this->Router = new Router($this->Request);
+        try {
+            $this->Request = new Request();
+            $this->Router = new Router($this->Request);
 
-        $ControllerLoader = new ControllerLoader($this->Request->getController());
-        if ($ControllerLoader->exist()) {
-            $this->Controller = $ControllerLoader->getInstance($this->Request);
-            call_user_func([$this->Controller, $this->Request->getAction()], $this->Request->getParams());
+            $ControllerLoader = new ControllerLoader($this->Request->getController());
+            if ($ControllerLoader->exist()) {
+                $this->Controller = $ControllerLoader->getInstance($this->Request);
+                if (method_exists($this->Controller, $this->Request->getAction())) {
+                    call_user_func([$this->Controller, $this->Request->getAction()], $this->Request->getParams());
+                } else {
+                    $exception = new NotFoundException('Action '.$this->Request->getAction().' not found in Controller '.ucfirst($this->Request->getController().'Controller'));
+                    throw $exception;
+                }
+            } else {
+                $exception = new NotFoundException('Controller '.ucfirst($this->Request->getController()).'Controller not found');
+                throw $exception;
+            }
+        } catch(NotFoundException $e) {
+            echo $e->cry();
         }
     }
 }
