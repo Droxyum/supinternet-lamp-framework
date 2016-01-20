@@ -3,3 +3,5 @@ orm:
     username: framework
     password: MWQa4cGEV44rF3J7
     database: framework
+    driver: pdo_mysql
+    devmode: true
