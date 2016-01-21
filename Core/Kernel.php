@@ -13,6 +13,7 @@ use Core\Exception\NotFoundException;
 use Core\Http\Request\Request;
 use Core\Http\Routing\Router;
 use Core\Loader\ControllerLoader;
+use Core\Service\Logger;
 
 class Kernel
 {
@@ -31,6 +32,9 @@ class Kernel
                 $this->Controller = $ControllerLoader->getInstance($this->Request);
                 if (method_exists($this->Controller, $this->Request->getAction())) {
                     call_user_func([$this->Controller, $this->Request->getAction()], $this->Request->getParams());
+                    $Logger = new Logger('/logs/access.log');
+                    $Date = new \DateTime('now');
+                    $Logger->writeLine('['.$Date->getTimestamp().'] path:'.$this->Request->getPath().' type:'.$this->Request->getMethod());
                 } else {
                     $exception = new NotFoundException('Action '.$this->Request->getAction().' not found in Controller '.ucfirst($this->Request->getController().'Controller'));
                     throw $exception;
