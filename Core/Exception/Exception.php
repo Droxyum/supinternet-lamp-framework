@@ -9,9 +9,18 @@
 namespace Core\Exception;
 
 
+use Core\Service\Logger;
+
 class Exception extends \Exception
 {
     protected $className = false;
+
+    public function __construct($message, $code = 0, \Exception $previous = null) {
+        parent::__construct($message, $code, $previous);
+        $Date = new \DateTime();
+        $Logger = new Logger('/logs/error.log');
+        $Logger->writeLine('['.$Date->getTimestamp().'] '.$message);
+    }
 
     protected function setClass($class) {
         $this->className = $class;

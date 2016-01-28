@@ -26,6 +26,7 @@ class Logger
         if ($this->exist()) {
             $content = file_get_contents($this->file);
         }
+        $content .= 'IP: '.$_SERVER['REMOTE_ADDR'].' | ';
         $content .= $line."\n";
         file_put_contents($this->file, $content);
     }

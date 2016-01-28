@@ -57,7 +57,7 @@ class Router
                 return true;
             }
         }
-        $exception = new NotFoundException("Route not found");
+        $exception = new NotFoundException('Path:'.$this->Request->getPath().', Route not found');
         throw $exception;
     }
 

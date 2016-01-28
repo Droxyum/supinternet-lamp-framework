@@ -34,13 +34,13 @@ class Kernel
                     call_user_func([$this->Controller, $this->Request->getAction()], $this->Request->getParams());
                     $Logger = new Logger('/logs/access.log');
                     $Date = new \DateTime('now');
-                    $Logger->writeLine('['.$Date->getTimestamp().'] path:'.$this->Request->getPath().' type:'.$this->Request->getMethod());
+                    $Logger->writeLine('['.$Date->getTimestamp().'] Path:'.$this->Request->getPath().' type:'.$this->Request->getMethod());
                 } else {
-                    $exception = new NotFoundException('Action '.$this->Request->getAction().' not found in Controller '.ucfirst($this->Request->getController().'Controller'));
+                    $exception = new NotFoundException('Path:'.$this->Request->getPath().', Action '.$this->Request->getAction().' not found in Controller '.ucfirst($this->Request->getController().'Controller'));
                     throw $exception;
                 }
             } else {
-                $exception = new NotFoundException('Controller '.ucfirst($this->Request->getController()).'Controller not found');
+                $exception = new NotFoundException('Path:'.$this->Request->getPath().', Controller '.ucfirst($this->Request->getController()).'Controller not found');
                 throw $exception;
             }
         } catch(NotFoundException $e) {
