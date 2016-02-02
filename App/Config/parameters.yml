@@ -5,6 +5,3 @@ orm:
     database: framework
     driver: pdo_mysql
     devmode: true
-
-logs:
-    path: %ROOT_DIR%/logs
