@@ -18,9 +18,7 @@ class ConfigLoader
         $file = ROOT_DIR.'/App/Config/'.$config.'.yml';
         if (file_exists($file)) {
             return Yaml::parse(file_get_contents($file));
-        } else {
-            $exception = new NotFoundException("Config $config not found");
-            throw $exception;
         }
+        return false;
     }
 }
