@@ -11,6 +11,7 @@ namespace Core\Controller;
 
 use Core\DIC\DIC;
 use Core\Http\Request\Request;
+use Core\Loader\ConfigLoader;
 use Core\Orm\Orm;
 
 class Controller
@@ -28,6 +29,17 @@ class Controller
 
     private function fillContainer() {
         $this->container->setInstance($this->Request);
-        //$this->container->setInstance($this->Orm);
+        $this->container->setInstance($this->Orm);
+    }
+
+    public function generateUrl($routeName, $params = []) {
+        $Loader = new ConfigLoader();
+        $Routing = $Loader->load('routing');
+        $Routing = $Routing[$routeName];
+        $pattern = $Routing['path'];
+        foreach ($params as $k => $v) {
+            $pattern = str_replace(':'.$k, $v, $pattern);
+        }
+        return BASE_URL.$pattern;
     }
 }
