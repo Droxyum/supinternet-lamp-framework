@@ -33,7 +33,7 @@ class DIC
     }
 
     public function get($key) {
-        if (empty($this->factories[$key])) {
+        if (empty($this->factories[$key]) && !empty($this->registry[$key])) {
             return $this->factories[$key] = $this->registry[$key]();
         }
 

@@ -28,6 +28,6 @@ class Controller
 
     private function fillContainer() {
         $this->container->setInstance($this->Request);
-        $this->container->setInstance($this->Orm);
+        //$this->container->setInstance($this->Orm);
     }
 }
