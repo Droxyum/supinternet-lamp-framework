@@ -1,15 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <ul>
-        {% for p in Products %}
-            <li>{{ p.name }}</li>
-        {% endfor %}
-    </ul>
-    {{ path('homepage') }}
-</body>
-</html>
+{% extends 'layout.html.twig' %}
+
+{% block title %}{{ parent() }} Homepage {% endblock %}
+
+{% block body %}
+    {{ parent() }}
+
+
+    {% for p in Products %}
+        <div class="post">
+            <b>{{ p.id }} - {{ p.name }}</b>
+            <p>{{ p.content | slice(0, 100) }}... <a href="{{ path('post', {'id' : p.id}) }}">next</a></p>
+        </div>
+    {% endfor %}
+
+{% endblock %}

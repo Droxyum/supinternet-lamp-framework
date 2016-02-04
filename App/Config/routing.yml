@@ -1,4 +1,11 @@
-'homepage':
+homepage:
     path: '/'
     controller: Default
     action: index
+
+post:
+    path: '/post/:id'
+    controller: Default
+    action: post
+    requirements:
+        ':id': '[0-9]+'

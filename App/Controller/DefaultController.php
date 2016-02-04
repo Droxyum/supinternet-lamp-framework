@@ -19,4 +19,9 @@ class DefaultController extends Controller
         $Products = $this->Orm->getEntityManager()->getRepository('App\\Entity\\Product')->findAll();
         return new Response('Default/index.html.twig', [ 'Products' => $Products ]);
     }
+
+    public function post(StorageCollection $params) {
+        $Product = $this->Orm->getEntityManager()->getRepository('App\\Entity\\Product')->find($params->get('id'));
+        return new Response('Default/post.html.twig', [ 'Product' => $Product ]);
+    }
 }

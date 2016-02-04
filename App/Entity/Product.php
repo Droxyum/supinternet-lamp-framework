@@ -13,6 +13,9 @@ class Product
     /** @Column(type="string") **/
     protected $name;
 
+    /** @Column(type="string") **/
+    protected $content;
+
     public function getId()
     {
         return $this->id;
@@ -27,4 +30,15 @@ class Product
     {
         $this->name = $name;
     }
+
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    public function setContent($content)
+    {
+        $this->content = $content;
+    }
+
 }

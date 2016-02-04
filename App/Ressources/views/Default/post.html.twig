@@ -1,0 +1,13 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}{{ parent() }} Post: {{ Product.id }} {% endblock %}
+
+{% block body %}
+    {{ parent() }}
+
+    <div class="post">
+        <b>{{ Product.id }} - {{ Product.name }}</b>
+        <p>{{ Product.content }}</p>
+    </div>
+
+{% endblock %}
