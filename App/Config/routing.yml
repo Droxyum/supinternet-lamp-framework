@@ -3,6 +3,11 @@ homepage:
     controller: Default
     action: index
 
+post_create:
+    path: '/post/create'
+    controller: Default
+    action: create
+
 post:
     path: '/post/:id'
     controller: Default

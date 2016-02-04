@@ -5,6 +5,7 @@
 {% block body %}
     {{ parent() }}
 
+    <a href="{{ path('post_create') }}">Ajouter</a>
 
     {% for p in Products %}
         <div class="post">

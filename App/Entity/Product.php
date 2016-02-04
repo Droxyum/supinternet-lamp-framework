@@ -7,7 +7,10 @@ namespace App\Entity;
  **/
 class Product
 {
-    /** @Id @Column(type="integer") **/
+    /**
+     * @Id @Column(type="integer")
+     * @GeneratedValue(strategy="IDENTITY")
+     **/
     protected $id;
 
     /** @Column(type="string") **/
