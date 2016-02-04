@@ -10,6 +10,7 @@ namespace Core\Http\Response;
 
 
 use Core\Exception\NotFoundException;
+use Core\Twig\Router;
 
 class Response
 {
@@ -18,10 +19,9 @@ class Response
         $loader = new \Twig_Loader_Filesystem(ROOT_DIR.'/App/Ressources/views/');
         $viewFile = ROOT_DIR.'/App/Ressources/views/'.$view;
         if (file_exists($viewFile)) {
-            $twig = new \Twig_Environment($loader, array(
-                'debug' => true,
-            ));
+            $twig = new \Twig_Environment($loader);
             $twig->addExtension(new \Twig_Extension_Debug());
+            $twig->addExtension(new Router());
 
             echo $twig->render($view, array_merge($params, [
                 'ROOT_URL' => ROOT_URL,
@@ -32,4 +32,5 @@ class Response
             throw new NotFoundException('Template '.$view.' not found');
         }
     }
+
 }
