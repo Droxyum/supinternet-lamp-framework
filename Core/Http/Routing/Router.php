@@ -14,22 +14,43 @@ use Core\Exception\NotFoundException;
 use Core\Http\Request\Request;
 use Core\Loader\ConfigLoader;
 
+/**
+ * Class Router
+ * @package Core\Http\Routing
+ */
 class Router
 {
+    /**
+     * @var Request
+     */
     private $Request;
+    /**
+     * @var
+     */
     private $routing;
 
+    /**
+     * Router constructor.
+     * @param Request $Request
+     */
     public function __construct(Request &$Request) {
         $this->Request = &$Request;
         $this->loadConfig();
         $this->parse();
     }
 
+    /**
+     *
+     */
     public function loadConfig() {
         $Loader = new ConfigLoader();
         $this->routing = $Loader->load('routing');
     }
 
+    /**
+     * @return bool
+     * @throws NotFoundException
+     */
     public function parse() {
         if($this->match()) {
             $this->getInfos();
@@ -38,6 +59,10 @@ class Router
         return false;
     }
 
+    /**
+     * @return bool
+     * @throws NotFoundException
+     */
     public function match() {
         foreach($this->routing as $key => $value) {
             $url = $value['path'];
@@ -61,6 +86,9 @@ class Router
         throw $exception;
     }
 
+    /**
+     * @return bool
+     */
     private function getInfos() {
         $this->Request->setController($this->routing[$this->Request->getRouteName()]['controller']);
         $this->Request->setAction($this->routing[$this->Request->getRouteName()]['action']);
@@ -68,6 +96,10 @@ class Router
         return true;
     }
 
+    /**
+     * @param array $array
+     * @return array
+     */
     private function array_remove_numerical(array $array) {
         foreach ($array as $key => $value) {
             if (is_int($key)) {

@@ -12,8 +12,16 @@ namespace Core\Loader;
 use Core\Exception\NotFoundException;
 use Symfony\Component\Yaml\Yaml;
 
+/**
+ * Class ConfigLoader
+ * @package Core\Loader
+ */
 class ConfigLoader
 {
+    /**
+     * @param $config
+     * @return array|bool
+     */
     public function load($config) {
         $file = ROOT_DIR.'/App/Config/'.$config.'.yml';
         if (file_exists($file)) {

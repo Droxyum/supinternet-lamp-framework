@@ -12,26 +12,55 @@ namespace Core\DIC;
 
 use Core\Exception\ReflectionException;
 
+/**
+ * Class DIC
+ * @package Core\DIC
+ */
 class DIC
 {
+    /**
+     * @var array
+     */
     private $registry = [];
+    /**
+     * @var array
+     */
     private $factories = [];
+    /**
+     * @var array
+     */
     private $instances = [];
 
 
+    /**
+     * @param $key
+     * @param callable $resolver
+     */
     public function set($key, Callable $resolver) {
         $this->registry[$key] = $resolver;
     }
 
+    /**
+     * @param $key
+     * @param callable $resolver
+     */
     public function setFactory($key, Callable $resolver) {
         $this->factories[$key] = $resolver;
     }
 
+    /**
+     * @param $instance
+     */
     public function setInstance($instance) {
         $reflection = new \ReflectionClass($instance);
         $this->instances[$reflection->getName()] = $instance;
     }
 
+    /**
+     * @param $key
+     * @return mixed
+     * @throws ReflectionException
+     */
     public function get($key) {
         if (empty($this->factories[$key]) && !empty($this->registry[$key])) {
             return $this->factories[$key] = $this->registry[$key]();

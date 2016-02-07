@@ -9,6 +9,10 @@
 namespace Core\Exception;
 
 
+/**
+ * Class ReflectionException
+ * @package Core\Exception
+ */
 class ReflectionException extends Exception
 {
 

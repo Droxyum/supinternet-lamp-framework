@@ -15,12 +15,28 @@ use Core\Http\Routing\Router;
 use Core\Loader\ControllerLoader;
 use Core\Service\Logger;
 
+/**
+ * Class Kernel
+ * @package Core
+ */
 class Kernel
 {
+    /**
+     * @var Request
+     */
     private $Request;
+    /**
+     * @var Router
+     */
     private $Router;
+    /**
+     * @var mixed
+     */
     private $Controller;
 
+    /**
+     * Kernel constructor.
+     */
     public function __construct()
     {
         try {

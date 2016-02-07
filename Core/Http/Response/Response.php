@@ -12,8 +12,18 @@ namespace Core\Http\Response;
 use Core\Exception\NotFoundException;
 use Core\Twig\Router;
 
+/**
+ * Class Response
+ * @package Core\Http\Response
+ */
 class Response
 {
+    /**
+     * Response constructor.
+     * @param $view
+     * @param array $params
+     * @throws NotFoundException
+     */
     public function __construct($view, $params = [])
     {
         $loader = new \Twig_Loader_Filesystem(ROOT_DIR.'/App/Ressources/views/');

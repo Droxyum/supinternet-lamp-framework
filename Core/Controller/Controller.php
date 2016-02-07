@@ -14,12 +14,29 @@ use Core\Http\Request\Request;
 use Core\Loader\ConfigLoader;
 use Core\Orm\Orm;
 
+/**
+ * Class Controller
+ * @package Core\Controller
+ */
 class Controller
 {
+    /**
+     * @var Request
+     */
     protected $Request;
+    /**
+     * @var Orm
+     */
     protected $Orm;
+    /**
+     * @var DIC
+     */
     protected $container;
 
+    /**
+     * Controller constructor.
+     * @param Request $Request
+     */
     public function __construct(Request $Request) {
         $this->Request = $Request;
         $this->Orm = new Orm();
@@ -32,6 +49,11 @@ class Controller
         $this->container->setInstance($this->Orm);
     }
 
+    /**
+     * @param $routeName
+     * @param array $params
+     * @return string
+     */
     public function generateUrl($routeName, $params = []) {
         $Loader = new ConfigLoader();
         $Routing = $Loader->load('routing');

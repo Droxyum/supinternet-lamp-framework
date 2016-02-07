@@ -14,10 +14,20 @@ use Core\Loader\ConfigLoader;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Setup;
 
+/**
+ * Class Orm
+ * @package Core\Orm
+ */
 class Orm
 {
+    /**
+     * @var EntityManager
+     */
     private static $em;
 
+    /**
+     * Orm constructor.
+     */
     public function __construct()
     {
         if (empty(self::$em)) {
@@ -40,6 +50,9 @@ class Orm
         }
     }
 
+    /**
+     * @return EntityManager
+     */
     public function getEntityManager() {
         return self::$em;
     }

@@ -9,18 +9,35 @@
 namespace Core\Service;
 
 
+/**
+ * Class Logger
+ * @package Core\Service
+ */
 class Logger
 {
+    /**
+     * @var string
+     */
     private $file;
 
+    /**
+     * Logger constructor.
+     * @param $file
+     */
     public function __construct($file) {
         $this->file = ROOT_DIR.$file;
     }
 
+    /**
+     * @return bool
+     */
     private function exist() {
         return (file_exists($this->file));
     }
 
+    /**
+     * @param $line
+     */
     public function writeLine($line) {
         $content = "";
         if ($this->exist()) {

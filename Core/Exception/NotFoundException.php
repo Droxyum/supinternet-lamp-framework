@@ -9,6 +9,10 @@
 namespace Core\Exception;
 
 
+/**
+ * Class NotFoundException
+ * @package Core\Exception
+ */
 class NotFoundException extends Exception
 {
 

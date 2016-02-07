@@ -6,8 +6,17 @@ namespace Core\Twig;
 use Core\Loader\ConfigLoader;
 
 
+/**
+ * Class Router
+ * @package Core\Twig
+ */
 class Router extends \Twig_Extension
 {
+    /**
+     * @param $routeName
+     * @param array $params
+     * @return string
+     */
     public function path($routeName, $params = []) {
         $Loader = new ConfigLoader();
         $Routing = $Loader->load('routing');
@@ -19,6 +28,10 @@ class Router extends \Twig_Extension
         return BASE_URL.$pattern;
     }
 
+    /**
+     * @param $path
+     * @return string
+     */
     public function asset($path) {
         if ($path[0] == '/') {
             return BASE_URL.$path;
@@ -26,11 +39,17 @@ class Router extends \Twig_Extension
         return BASE_URL.'/'.$path;
     }
 
+    /**
+     * @return string
+     */
     public function getName()
     {
         return 'Router';
     }
 
+    /**
+     * @return array
+     */
     public function getFunctions()
     {
         return array(
